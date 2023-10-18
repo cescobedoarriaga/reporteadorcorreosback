@@ -6,13 +6,13 @@ from email.message import EmailMessage
 from jproperties import Properties
 from models import correo
 
-app = FastAPI(openapi_url="/messengerws/openapi.json", docs_url="/messengerws/docs", redoc_url="/messenger/redoc")
+app = FastAPI(openapi_url="/messengerws/openapi.json", docs_url="/messengerws/docs", redoc_url="/messengerws/redoc")
 
 configs = Properties()
 with open('email.properties', 'rb') as read_prop:
         configs.load(read_prop, "utf-8")
 
-@app.post("/send-email")
+@app.post("/messengerws/send-email")
 async def send_email(correo: correo):
     try:
         # Crear un mensaje de correo electrónico
